@@ -14,7 +14,7 @@ const Auth = ({type}: {type: "signup" | "signin"}) => {
     async function sendRequest(){
         try{
             const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type}`, postInputs);
-            const jwt = response.data;
+            const jwt = response.data.jwt;
             localStorage.setItem("token", jwt);
             navigate("/blogs");
         }catch(e){
@@ -70,7 +70,7 @@ function LabelledInput({label, placeholder, onChange, type}: LabelledInputType){
     return (
         <div className="mt-4">
             <label className="block mb-2 text-sm font-semibold text-gray-900 pl-1" htmlFor="email">{label}</label>
-            <input id="email" type={type || "text"} placeholder={placeholder} onChange={onChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5"/>
+            <input type={type || "text"} placeholder={placeholder} onChange={onChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5"/>
         </div>
     )
 }
