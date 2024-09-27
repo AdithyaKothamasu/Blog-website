@@ -1,0 +1,1 @@
+export const BACKEND_URL="https://backend.adithya261004.workers.dev"
